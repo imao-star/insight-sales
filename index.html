@@ -1120,22 +1120,21 @@ const io = new IntersectionObserver(entries => {
 }, { threshold: 0.1 });
 document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
-// Form submit（バリデーション＋thanks.htmlへリダイレクト）
+// Form submit（バリデーション＋Formspree送信＋thanks.htmlへリダイレクト）
+const FORMSPREE_ENDPOINT = 'https://formspree.io/f/xvzlnvoa';
+
 function submitF(formId, doneId, source) {
   const form = document.getElementById(formId);
 
-  // 全必須フィールドをチェック
+  // ── バリデーション ──
   const inputs = form.querySelectorAll('input[required], select[required], textarea[required]');
   let valid = true;
-
-  // エラー表示リセット
   form.querySelectorAll('.f-err').forEach(el => el.remove());
 
   inputs.forEach(input => {
     input.style.borderColor = '';
     const val = input.value.trim();
     let msg = '';
-
     if (!val) {
       msg = 'こちらは必須項目です';
     } else if (input.type === 'email' && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val)) {
@@ -1143,7 +1142,6 @@ function submitF(formId, doneId, source) {
     } else if (input.type === 'tel' && !/^[\d\-\+\(\)\s]{7,}$/.test(val)) {
       msg = '正しい電話番号を入力してください';
     }
-
     if (msg) {
       valid = false;
       input.style.borderColor = '#DC2626';
@@ -1154,11 +1152,50 @@ function submitF(formId, doneId, source) {
       input.parentNode.appendChild(err);
     }
   });
-
   if (!valid) return;
 
-  // バリデーション通過 → thanks.htmlへ遷移
-  window.location.href = 'thanks.html';
+  // ── ボタンをローディング状態に ──
+  const btn = form.querySelector('.f-submit');
+  const btnOriginal = btn.textContent;
+  btn.textContent = '送信中...';
+  btn.disabled = true;
+  btn.style.opacity = '0.7';
+
+  // ── フォームデータ収集 ──
+  const allInputs = form.querySelectorAll('input, select, textarea');
+  const data = { _source: source };
+  allInputs.forEach(input => {
+    if (input.name) data[input.name] = input.value;
+  });
+
+  // ── Formspree へ Ajax 送信 ──
+  fetch(FORMSPREE_ENDPOINT, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+    body: JSON.stringify(data)
+  })
+  .then(res => {
+    if (res.ok) {
+      // 成功 → サンクスページへ
+      window.location.href = 'thanks.html';
+    } else {
+      return res.json().then(err => { throw new Error(err.error || '送信に失敗しました'); });
+    }
+  })
+  .catch(err => {
+    // エラー表示
+    btn.textContent = btnOriginal;
+    btn.disabled = false;
+    btn.style.opacity = '1';
+    const errDiv = document.createElement('p');
+    errDiv.className = 'f-err';
+    errDiv.style.cssText = 'color:#DC2626;font-size:13px;margin-top:12px;text-align:center;';
+    errDiv.textContent = '送信に失敗しました。時間をおいて再度お試しください。';
+    form.querySelectorAll('.f-err-send').forEach(e => e.remove());
+    errDiv.className += ' f-err-send';
+    btn.parentNode.insertBefore(errDiv, btn.nextSibling);
+    console.error('Formspree error:', err);
+  });
 }
 
 // Smooth scroll
