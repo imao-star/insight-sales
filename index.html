@@ -4,6 +4,26 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AIインサイトセールス｜Webコンサル会社の新規商談を、仕組みで創る。</title>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3K8TSPFSP2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-3K8TSPFSP2');
+
+  // ── A/Bテスト用：URLの ?p= パラメータをGA4に記録 ──
+  (function(){
+    var params = new URLSearchParams(window.location.search);
+    var pattern = params.get('p') || 'none';
+    gtag('event', 'lp_view', {
+      'mail_pattern': pattern,
+      'page': 'index'
+    });
+  })();
+</script>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&display=swap" rel="stylesheet">
 <style>
@@ -1176,6 +1196,14 @@ function submitF(formId, doneId, source) {
   })
   .then(res => {
     if (res.ok) {
+      // GA4：資料請求完了イベント
+      if (typeof gtag === 'function') {
+        var params = new URLSearchParams(window.location.search);
+        gtag('event', 'form_submit', {
+          'mail_pattern': params.get('p') || 'none',
+          'form_source': source
+        });
+      }
       // 成功 → サンクスページへ
       window.location.href = 'thanks.html';
     } else {
