@@ -30,7 +30,7 @@
   right: 50%;
   margin-left: -50vw;
   margin-right: -50vw;
-  overflow-x: hidden;
+  overflow-x: clip; /* hiddenだとTimerexが切れるのでclipに変更 */
   font-family: 'Noto Sans JP', sans-serif;
   color: #1E293B;
   background: #FFF;
@@ -114,8 +114,8 @@ html{scroll-behavior:smooth}
 .ty-tab-time{display:inline-block;background:var(--navy);color:#fff;font-size:11px;font-weight:700;padding:2px 10px;border-radius:100px;margin-top:8px}
 
 /* ─── Timerex埋め込みエリア ─── */
-.ty-timerex-wrap{max-width:760px;margin:0 auto;min-height:560px}
-#timerex_calendar{min-height:560px}
+.ty-timerex-wrap{width:100%;margin:0 auto;min-height:600px;overflow:visible}
+#timerex_calendar{min-height:600px;width:100%}
 
 /* ─── 安心要素 ─── */
 .ty-trust{background:var(--off);padding:60px 40px}
@@ -224,7 +224,7 @@ html{scroll-behavior:smooth}
 
 <!-- ■ 予約セクション -->
 <section class="ty-sec ty-booking">
-  <div class="ty-sec-inner">
+  <div class="ty-sec-inner" style="max-width:100%;padding:0 40px">
     <div class="ty-sec-head">
       <h2>ご希望の<em>相談方法</em>を選んでください</h2>
       <p>どちらも無料です。まずは気軽に、15分だけ。</p>
