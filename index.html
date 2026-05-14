@@ -1120,10 +1120,45 @@ const io = new IntersectionObserver(entries => {
 }, { threshold: 0.1 });
 document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
-// Form submit（成功表示のみ・実際の送信処理は別フォームシステムで実装）
+// Form submit（バリデーション＋thanks.htmlへリダイレクト）
 function submitF(formId, doneId, source) {
-  document.getElementById(formId).style.display = 'none';
-  document.getElementById(doneId).style.display = 'block';
+  const form = document.getElementById(formId);
+
+  // 全必須フィールドをチェック
+  const inputs = form.querySelectorAll('input[required], select[required], textarea[required]');
+  let valid = true;
+
+  // エラー表示リセット
+  form.querySelectorAll('.f-err').forEach(el => el.remove());
+
+  inputs.forEach(input => {
+    input.style.borderColor = '';
+    const val = input.value.trim();
+    let msg = '';
+
+    if (!val) {
+      msg = 'こちらは必須項目です';
+    } else if (input.type === 'email' && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val)) {
+      msg = '正しいメールアドレスを入力してください';
+    } else if (input.type === 'tel' && !/^[\d\-\+\(\)\s]{7,}$/.test(val)) {
+      msg = '正しい電話番号を入力してください';
+    }
+
+    if (msg) {
+      valid = false;
+      input.style.borderColor = '#DC2626';
+      const err = document.createElement('p');
+      err.className = 'f-err';
+      err.style.cssText = 'color:#DC2626;font-size:12px;margin-top:4px;';
+      err.textContent = msg;
+      input.parentNode.appendChild(err);
+    }
+  });
+
+  if (!valid) return;
+
+  // バリデーション通過 → thanks.htmlへ遷移
+  window.location.href = 'thanks.html';
 }
 
 // Smooth scroll
