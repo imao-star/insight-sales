@@ -4,6 +4,19 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>資料請求ありがとうございました｜AIインサイトセールス</title>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3K8TSPFSP2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-3K8TSPFSP2');
+
+  // サンクスページ到達イベント（資料請求完了の最終確認に使える）
+  gtag('event', 'thanks_view', { 'page': 'thanks' });
+</script>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&display=swap" rel="stylesheet">
 <style>
@@ -300,6 +313,8 @@ const TIMEREX_URLS = {
   meeting: 'https://timerex.net/s/wu/4390e215'
 };
 TimerexCalendar();
+
+// GA4：予約タブのクリック計測（電話 / 商談 どちらに関心があるか）
 function switchTab(type) {
   document.getElementById('tab-phone').classList.toggle('active', type === 'phone');
   document.getElementById('tab-meeting').classList.toggle('active', type === 'meeting');
@@ -307,6 +322,10 @@ function switchTab(type) {
   cal.setAttribute('data-url', TIMEREX_URLS[type]);
   cal.innerHTML = '';
   TimerexCalendar();
+
+  if (typeof gtag === 'function') {
+    gtag('event', 'booking_tab_click', { 'booking_type': type });
+  }
 }
 </script>
 </body>
