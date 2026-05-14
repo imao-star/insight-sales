@@ -1,0 +1,1139 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AIインサイトセールス｜Webコンサル会社の新規商談を、仕組みで創る。</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<style>
+/* ============================================================ */
+/* WordPressテーマ リセット（テーマの影響を完全に排除）           */
+/* ============================================================ */
+/* :where() は詳細度0なので、テーマCSSと既存LP CSSの両方に勝てる */
+:where(.is-lp),
+:where(.is-lp *),
+:where(.is-lp *::before),
+:where(.is-lp *::after) {
+  all: revert;
+}
+
+.is-lp *,
+.is-lp *::before,
+.is-lp *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* テーマのコンテンツコンテナを突き破って全幅表示 */
+.is-lp {
+  position: relative;
+  width: 100vw;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  overflow-x: hidden;
+  font-family: 'Noto Sans JP', sans-serif;
+  color: #1E293B;
+  background: #FFF;
+  line-height: 1.7;
+  font-size: 16px;
+}
+
+/* テーマがimg/aに付ける装飾も無効化（:where()で詳細度0にして、特定スタイルを邪魔しない） */
+:where(.is-lp) :where(img) { max-width: 100%; height: auto; border: 0; }
+:where(.is-lp) :where(a) { text-decoration: none; color: inherit; }
+:where(.is-lp) :where(button) { font-family: inherit; cursor: pointer; border: 0; background: transparent; }
+:where(.is-lp) :where(ul), :where(.is-lp) :where(ol) { list-style: none; }
+:where(.is-lp) :where(table) { border-collapse: collapse; border-spacing: 0; width: 100%; }
+
+/* ============================================================ */
+/* 以下、LP本体のスタイル                                        */
+/* ============================================================ */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+:root{
+  --navy:#0B1F42; --navy2:#162B55;
+  --blue:#1560BD; --sky:#0EA5E9; --sky-l:#E0F2FE;
+  --gold:#D4A017; --gold-l:#FFF8E7;
+  --red:#DC2626; --green:#16A34A;
+  --white:#FFF; --off:#F7F9FC;
+  --border:#DDE4EE; --text:#1E293B; --muted:#64748B; --light:#94A3B8;
+}
+body{font-family:'Noto Sans JP',sans-serif;color:var(--text);background:var(--white);line-height:1.7}
+
+/* ─── NAV ─── */
+.nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(11,31,66,0.92);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,.08);padding:0 40px;height:64px;display:flex;align-items:center;justify-content:space-between;transition:background .3s}
+.nav.s{background:rgba(255,255,255,.97);border-bottom-color:var(--border)}
+.nav.s .nav-link{color:var(--muted)}
+.nav.s .nav-logo-img{filter:none}
+.nav-logo{display:flex;align-items:center}
+.nav-logo-img{height:48px !important;width:auto !important;max-height:48px;filter:brightness(0) invert(1);transition:filter .3s}
+.nav-links{display:flex;gap:28px}
+.nav-link{font-size:13px;color:rgba(255,255,255,.75);text-decoration:none;font-weight:500;transition:color .2s}
+.nav-link:hover{color:#fff}
+.nav-btn{background:var(--sky);color:#fff;font-size:13px;font-weight:700;padding:10px 22px;border-radius:6px;text-decoration:none;transition:background .2s;white-space:nowrap}
+.nav-btn:hover{background:var(--blue)}
+
+/* ─── HERO ─── */
+.hero{min-height:100vh;position:relative;display:flex;align-items:center;padding:80px 40px 60px;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background-image:url('https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=1800&q=80');background-size:cover;background-position:center top}
+.hero-ov{position:absolute;inset:0;background:linear-gradient(105deg,rgba(11,31,66,.93) 0%,rgba(11,31,66,.82) 48%,rgba(11,31,66,.55) 68%,rgba(11,31,66,.42) 100%)}
+.hero-dots{position:absolute;inset:0;opacity:.04;background-image:radial-gradient(circle,#fff 1px,transparent 1px);background-size:28px 28px}
+.hero-inner{max-width:1180px;width:100%;margin:0 auto;display:grid;grid-template-columns:1fr 420px;gap:56px;align-items:center;position:relative;z-index:2}
+
+.hero-badge{display:inline-flex;align-items:center;gap:10px;background:linear-gradient(135deg,#DC2626,#B91C1C);border:2px solid #FCA5A5;color:#fff;font-size:16px;font-weight:900;letter-spacing:.08em;padding:10px 24px;border-radius:8px;margin-bottom:28px;box-shadow:0 8px 24px rgba(220,38,38,.4)}
+.hero-badge span{width:8px;height:8px;border-radius:50%;background:#fff;animation:blink 2s infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+
+.hero-h1{font-size:clamp(32px,4.2vw,58px);font-weight:900;color:#fff;line-height:1.25;letter-spacing:-.01em;margin-bottom:24px}
+.hero-h1 em{color:var(--sky);font-style:normal}
+
+.hero-lead{font-size:16px;color:rgba(255,255,255,.75);line-height:1.9;max-width:540px;margin-bottom:36px;border-left:3px solid var(--sky);padding-left:18px}
+
+.hero-kpi{display:flex;gap:0;border:1px solid rgba(255,255,255,.14);border-radius:14px;overflow:hidden;backdrop-filter:blur(6px);background:rgba(255,255,255,.06);margin-bottom:28px}
+.kpi-item{flex:1;padding:16px 20px;text-align:center;border-right:1px solid rgba(255,255,255,.1)}
+.kpi-item:last-child{border-right:none}
+.kpi-n{font-size:24px;font-weight:900;color:#fff;line-height:1;display:block;margin-bottom:4px}
+.kpi-n sub{font-size:11px;vertical-align:baseline}
+.kpi-l{font-size:11px;color:rgba(255,255,255,.55)}
+
+.hero-tags{display:flex;gap:8px;flex-wrap:wrap}
+.hero-tag{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);color:rgba(255,255,255,.88);font-size:12px;font-weight:700;padding:7px 14px;border-radius:100px}
+
+/* フォームカード */
+.hero-form{background:rgba(255,255,255,.97);border-radius:20px;padding:34px 30px;box-shadow:0 24px 72px rgba(0,0,0,.45)}
+.form-eyebrow{font-size:11px;font-weight:700;color:var(--sky);letter-spacing:.15em;text-align:center;margin-bottom:6px}
+.form-title{font-size:17px;font-weight:900;color:var(--navy);text-align:center;margin-bottom:4px}
+.form-sub{font-size:12px;color:var(--muted);text-align:center;margin-bottom:20px;padding-bottom:20px;border-bottom:1px solid var(--border)}
+.ff{margin-bottom:11px}
+.ff label{display:block;font-size:12px;font-weight:700;color:var(--text);margin-bottom:4px}
+.ff label .r{background:var(--red);color:#fff;font-size:11px;padding:1px 5px;border-radius:3px;margin-left:5px}
+.ff input,.ff select{width:100%;border:1.5px solid var(--border);border-radius:8px;padding:10px 13px;font-size:13px;font-family:inherit;color:var(--text);background:var(--off);outline:none;transition:border-color .2s,box-shadow .2s}
+.ff input:focus,.ff select:focus{border-color:var(--sky);background:#fff;box-shadow:0 0 0 3px rgba(14,165,233,.12)}
+.fr{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.f-submit{width:100%;padding:15px;background:var(--sky);color:#fff;font-size:15px;font-weight:900;border:none;border-radius:9px;cursor:pointer;margin-top:8px;transition:background .2s,transform .15s;font-family:inherit;box-shadow:0 6px 20px rgba(14,165,233,.4)}
+.f-submit:hover{background:var(--blue);transform:translateY(-1px)}
+.f-privacy{font-size:11px;color:var(--light);text-align:center;margin-top:9px}
+.f-done{display:none;text-align:center;padding:32px 0}
+.f-done .ck{font-size:44px;margin-bottom:10px}
+.f-done h4{font-size:17px;font-weight:900;color:var(--navy);margin-bottom:6px}
+.f-done p{font-size:13px;color:var(--muted)}
+
+/* ─── TRUST ─── */
+.trust{background:#fff;padding:32px 40px;border-bottom:1px solid var(--border)}
+.trust-inner{max-width:1180px;margin:0 auto;display:flex;gap:32px;align-items:center;flex-wrap:wrap;justify-content:center}
+.trust-badge{display:flex;align-items:center;gap:12px}
+.trust-icon{width:44px;height:44px;border-radius:10px;background:var(--navy);display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
+.trust-text strong{display:block;font-size:16px;font-weight:900;color:var(--navy);line-height:1.2}
+.trust-text span{font-size:12px;color:var(--muted)}
+.trust-div{width:1px;height:40px;background:var(--border)}
+
+/* ─── MEDALS ─── */
+.medals{background:var(--navy);padding:72px 40px;position:relative;overflow:hidden}
+.medals::before{content:'';position:absolute;inset:0;opacity:.05;background-image:radial-gradient(circle,#fff 1px,transparent 1px);background-size:28px 28px}
+.medals-inner{max-width:1180px;margin:0 auto;position:relative;z-index:1}
+.medals-head{text-align:center;margin-bottom:52px}
+.medals-head h2{font-size:clamp(20px,2.5vw,30px);font-weight:900;color:#fff;line-height:1.35}
+.medals-head h2 span{color:var(--sky)}
+.medals-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+.medal-card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:20px;padding:32px 20px;text-align:center;position:relative;overflow:hidden;transition:transform .3s,background .3s}
+.medal-card:hover{transform:translateY(-4px);background:rgba(255,255,255,.1)}
+.medal-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px}
+.medal-card.gold::before{background:linear-gradient(90deg,#D4A017,#F5CC4E,#D4A017)}
+.medal-card.silver::before{background:linear-gradient(90deg,#94A3B8,#CBD5E1,#94A3B8)}
+.medal-card.sky::before{background:linear-gradient(90deg,var(--sky),#38BDF8,var(--sky))}
+.medal-card.green::before{background:linear-gradient(90deg,var(--green),#22C55E,var(--green))}
+.medal-icon{font-size:40px;margin-bottom:12px;display:block}
+.medal-num{font-size:clamp(38px,4vw,52px);font-weight:900;color:#fff;line-height:1;margin-bottom:8px}
+.medal-num sub{font-size:18px;vertical-align:baseline;font-weight:400}
+.medal-label{font-size:12px;color:rgba(255,255,255,.65);font-weight:500}
+.medal-sub{font-size:11px;color:rgba(255,255,255,.4);margin-top:4px}
+
+/* ─── SECTION BASE ─── */
+.sec{padding:96px 40px}
+.sec-off{background:var(--off)}
+.sec-inner{max-width:1180px;margin:0 auto}
+.sec-head{text-align:center;margin-bottom:56px}
+.sec-tag{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.15em;color:var(--sky);text-transform:uppercase;margin-bottom:12px}
+.sec-h2{font-size:clamp(22px,3vw,36px);font-weight:900;color:var(--navy);line-height:1.35;margin-bottom:14px}
+.sec-h2.wh{color:#fff}
+.sec-p{font-size:15px;color:var(--muted);max-width:580px;margin:0 auto;line-height:1.8}
+
+/* ─── PROBLEM ─── */
+.prob-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;max-width:900px;margin:0 auto 40px}
+.prob-card{background:#fff;border-radius:14px;border:2px solid var(--border);padding:28px 28px 24px;display:flex;gap:18px;align-items:flex-start;transition:border-color .2s,transform .2s}
+.prob-card:hover{border-color:var(--sky);transform:translateY(-2px)}
+.prob-num{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--navy),var(--navy2));color:#fff;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:900;flex-shrink:0}
+.prob-card p{font-size:17px;font-weight:700;color:var(--navy);line-height:1.55}
+.prob-card-full{grid-column:1/-1}
+.prob-banner{background:var(--navy);border-radius:14px;padding:28px 36px;display:flex;align-items:center;gap:20px;max-width:900px;margin:0 auto}
+.prob-banner-icon{font-size:36px;flex-shrink:0}
+.prob-banner p{font-size:16px;font-weight:700;color:#fff;line-height:1.7}
+.prob-banner p span{color:var(--sky)}
+
+/* ─── ABOUT ─── */
+.about-inner{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.about-tag{font-size:11px;font-weight:700;letter-spacing:.15em;color:var(--sky);margin-bottom:14px;display:block}
+.about-h2{font-size:clamp(22px,2.8vw,32px);font-weight:900;color:var(--navy);line-height:1.4;margin-bottom:20px}
+.about-h2 .hl{background:linear-gradient(transparent 62%,rgba(14,165,233,.25) 62%);padding:0 3px}
+.about-p{font-size:15px;color:var(--text);line-height:1.95;margin-bottom:14px}
+.about-p strong{color:var(--navy);font-weight:900}
+.about-nums{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:28px}
+.about-num{background:var(--off);border-radius:10px;padding:18px 14px;text-align:center;border-top:3px solid var(--sky)}
+.about-num .n{font-size:24px;font-weight:900;color:var(--navy);line-height:1}
+.about-num .n sub{font-size:11px;vertical-align:baseline;font-weight:400;color:var(--muted)}
+.about-num .l{font-size:11px;color:var(--muted);margin-top:4px}
+.about-photos{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:185px 185px;gap:12px;position:relative}
+.ap{border-radius:12px;background-size:cover;background-position:center;box-shadow:0 8px 28px rgba(11,31,66,.12)}
+.ap.tall{grid-row:1/3}
+.ap1{background-image:url('./images/about-building.png');background-position:center}
+.ap2{background-image:url('./images/about-ipo.jpeg');background-position:center}
+.ap3{background-image:url('./images/about-office.png');background-position:center}
+.about-badge-float{position:absolute;bottom:-16px;left:-16px;background:#fff;border-radius:12px;padding:12px 16px;box-shadow:0 8px 28px rgba(0,0,0,.14);display:flex;align-items:center;gap:12px;border:1px solid var(--border)}
+.abf-icon{width:36px;height:36px;border-radius:8px;background:linear-gradient(135deg,var(--navy),var(--navy2));color:var(--sky);display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:900}
+.abf-text strong{display:block;font-size:12px;font-weight:900;color:var(--navy)}
+.abf-text span{font-size:11px;color:var(--muted)}
+
+/* ─── CTA BAND ─── */
+.cta-band{background:linear-gradient(135deg,var(--navy),var(--navy2));padding:56px 40px;position:relative;overflow:hidden}
+.cta-band::before{content:'';position:absolute;inset:0;opacity:.05;background-image:radial-gradient(circle,#fff 1px,transparent 1px);background-size:24px 24px}
+.cta-band-in{max-width:1180px;margin:0 auto;position:relative;z-index:1;display:flex;align-items:center;justify-content:space-between;gap:32px;flex-wrap:wrap}
+.cta-band-text h3{font-size:clamp(20px,2.5vw,28px);font-weight:900;color:#fff;line-height:1.4;margin-bottom:6px}
+.cta-band-text h3 span{color:var(--sky)}
+.cta-band-text p{font-size:14px;color:rgba(255,255,255,.6)}
+.cta-band-btns{display:flex;gap:12px;flex-shrink:0}
+.btn-cta{display:inline-flex;align-items:center;gap:8px;background:var(--sky);color:#fff;font-size:15px;font-weight:900;padding:16px 32px;border-radius:8px;text-decoration:none;transition:all .2s;box-shadow:0 4px 16px rgba(14,165,233,.4)}
+.btn-cta:hover{background:var(--blue);transform:translateY(-2px)}
+.btn-ghost{display:inline-flex;align-items:center;gap:8px;background:transparent;color:#fff;font-size:14px;font-weight:700;padding:16px 24px;border-radius:8px;text-decoration:none;border:1.5px solid rgba(255,255,255,.25);transition:all .2s}
+.btn-ghost:hover{border-color:var(--sky);background:rgba(255,255,255,.07)}
+
+/* ─── HOW IT WORKS ─── */
+.how-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.how-left h3{font-size:22px;font-weight:900;color:var(--navy);line-height:1.4;margin-bottom:16px}
+.how-left h3 span{color:var(--sky)}
+.how-left p{font-size:15px;color:var(--muted);line-height:1.85;margin-bottom:22px}
+.how-left p strong{color:var(--navy);font-weight:900}
+.how-right{background:var(--off);border-radius:16px;padding:32px;border:1px solid var(--border)}
+.fml{display:flex;flex-direction:column;gap:8px;align-items:center}
+.fml-b{width:100%;background:#fff;border:1.5px solid var(--border);border-radius:10px;padding:16px 20px;display:flex;align-items:center;gap:14px}
+.fml-ic{font-size:28px}
+.fml-t{font-size:14px;font-weight:900;color:var(--navy)}
+.fml-s{font-size:12px;color:var(--muted);margin-top:2px}
+.fml-x{font-size:22px;font-weight:900;color:var(--sky)}
+.fml-line{height:2px;background:var(--border);width:100%}
+.fml-res{width:100%;background:var(--navy);border-radius:10px;padding:18px 20px;display:flex;align-items:center;gap:14px}
+.fml-res .fml-t{color:#fff;font-size:15px}
+.fml-res .fml-s{color:var(--sky)}
+
+/* ─── STEPS ─── */
+.steps-col{display:flex;flex-direction:column;gap:24px}
+.step-row{display:grid;grid-template-columns:380px 1fr;overflow:hidden;background:#fff;border-radius:16px;border:1px solid var(--border);box-shadow:0 4px 16px rgba(0,0,0,.04);transition:transform .25s,box-shadow .25s}
+.step-row:hover{transform:translateY(-3px);box-shadow:0 12px 36px rgba(0,0,0,.09)}
+.step-row.flip{grid-template-columns:1fr 380px}
+.step-photo{background-size:cover;background-position:center;min-height:300px;position:relative}
+.step-photo::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,transparent 40%,rgba(11,31,66,.35) 100%)}
+.step-num-badge{position:absolute;top:20px;left:20px;width:48px;height:48px;border-radius:50%;background:var(--sky);color:#fff;display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:900;z-index:1;box-shadow:0 4px 14px rgba(14,165,233,.5)}
+.sp1{background-image:url('https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800&q=80')}
+.sp2{background-image:url('https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=800&q=80')}
+.sp3{background-image:url('https://images.unsplash.com/photo-1591115765373-5207764f72e7?w=800&q=80')}
+.step-body{padding:36px 40px;display:flex;flex-direction:column;justify-content:center}
+.step-pill{display:inline-block;background:var(--sky-l);color:var(--blue);font-size:11px;font-weight:700;padding:4px 12px;border-radius:100px;margin-bottom:12px;width:fit-content}
+.step-body h3{font-size:22px;font-weight:900;color:var(--navy);margin-bottom:12px}
+.step-body p{font-size:14px;color:var(--text);line-height:1.85;margin-bottom:18px}
+.step-body p strong{color:var(--navy);font-weight:900}
+.step-result{background:var(--off);border-radius:8px;padding:12px 16px;font-size:13px;font-weight:700;color:var(--navy);display:flex;align-items:center;gap:10px}
+.res-bdg{background:var(--navy);color:var(--sky);font-size:11px;font-weight:700;padding:3px 10px;border-radius:4px;white-space:nowrap}
+
+/* ─── CASES ─── */
+.cases-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.case-card{background:#fff;border-radius:16px;overflow:hidden;border:1px solid var(--border);text-decoration:none;color:inherit;display:flex;flex-direction:column;transition:transform .3s,box-shadow .3s}
+.case-card:hover{transform:translateY(-6px);box-shadow:0 12px 36px rgba(0,0,0,.12)}
+.case-img{height:200px;background-size:cover;background-position:center;position:relative;overflow:hidden}
+.case-img::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(11,31,66,.6) 100%)}
+.ci1{background-image:url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&q=80');background-position:center}
+.ci2{background-image:url('https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&q=80');background-position:center}
+.ci3{background-image:url('https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=800&q=80');background-position:center}
+.ci-tag{position:absolute;top:14px;left:14px;z-index:2;background:rgba(11,31,66,.85);color:#fff;font-size:11px;font-weight:700;padding:5px 12px;border-radius:4px}
+.ci-over{position:absolute;bottom:14px;left:14px;right:14px;z-index:2;display:flex;align-items:center;gap:12px}
+.ci-logo{width:52px;height:52px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:900;color:var(--navy);box-shadow:0 4px 12px rgba(0,0,0,.25);overflow:hidden;border:2px solid #fff;flex-shrink:0}
+.ci-logo img{width:100%;height:100%;object-fit:cover;display:block}
+.ci-meta{color:#fff}
+.ci-meta-n{font-size:14px;font-weight:900;line-height:1.2}
+.ci-meta-c{font-size:11px;opacity:.85;margin-top:2px}
+.case-body{padding:24px;flex:1;display:flex;flex-direction:column}
+.case-quote{font-size:15px;font-weight:900;color:var(--navy);line-height:1.5;margin-bottom:14px}
+.case-quote .hl{background:linear-gradient(transparent 62%,rgba(14,165,233,.25) 62%);padding:0 2px}
+.case-stats{display:flex;gap:12px;margin-bottom:14px;padding-bottom:14px;border-bottom:1px solid var(--border)}
+.case-stat-n{font-size:20px;font-weight:900;color:var(--sky);line-height:1}
+.case-stat-n sub{font-size:11px;vertical-align:baseline}
+.case-stat-l{font-size:11px;color:var(--muted);margin-top:3px;font-weight:700}
+.case-sum{font-size:13px;color:var(--muted);line-height:1.7;flex:1}
+
+/* ─── P8: 私たちは営業代行でもコンサルでもない（3カラム比較版） ─── */
+.p8-vs{display:grid;grid-template-columns:1fr 1.25fr 1fr;gap:16px;max-width:980px;margin:0 auto 36px;align-items:stretch}
+.p8-card{background:#fff;border-radius:18px;padding:40px 26px 32px;text-align:center;position:relative;border:2px solid var(--border);transition:transform .25s}
+.p8-card.bad{opacity:.72;background:linear-gradient(180deg,#F8FAFC 0%,#fff 100%)}
+.p8-card.good{background:linear-gradient(135deg,var(--navy) 0%,var(--navy2) 100%);color:#fff;border-color:var(--sky);transform:scale(1.06);box-shadow:0 16px 48px rgba(11,31,66,.3),0 0 0 4px rgba(14,165,233,.15);z-index:2}
+.p8-card-mark{position:absolute;top:18px;right:18px;width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:900}
+.p8-card.bad .p8-card-mark{background:#FEE2E2;color:#DC2626}
+.p8-card.good .p8-card-mark{background:var(--sky);color:#fff}
+.p8-card-tag{position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:var(--sky);color:#fff;font-size:11px;font-weight:700;padding:5px 18px;border-radius:100px;white-space:nowrap;letter-spacing:.05em;box-shadow:0 4px 12px rgba(14,165,233,.4)}
+.p8-card-icon{width:68px;height:68px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:30px;margin:0 auto 18px}
+.p8-card.bad .p8-card-icon{background:#F1F5F9;border:2px dashed #CBD5E1}
+.p8-card.good .p8-card-icon{background:rgba(14,165,233,.25);border:2px solid var(--sky)}
+.p8-card-label{font-size:11px;font-weight:700;letter-spacing:.18em;margin-bottom:6px;color:var(--muted)}
+.p8-card.good .p8-card-label{color:var(--sky)}
+.p8-card-name{font-size:22px;font-weight:900;line-height:1.3;margin-bottom:16px;color:var(--navy)}
+.p8-card.good .p8-card-name{color:#fff;font-size:24px}
+.p8-card-desc{font-size:13px;line-height:1.7;color:var(--muted);padding-top:16px;border-top:1px solid var(--border)}
+.p8-card.good .p8-card-desc{color:rgba(255,255,255,.88);border-color:rgba(14,165,233,.35)}
+.p8-banner{background:linear-gradient(135deg,var(--navy) 0%,var(--navy2) 100%);border-radius:16px;padding:32px 40px;text-align:center;margin:0 auto;max-width:980px;border:1px solid var(--sky);box-shadow:0 8px 28px rgba(11,31,66,.18)}
+.p8-banner p{font-size:17px;font-weight:700;color:#fff;line-height:1.8}
+.p8-banner p span{color:var(--sky);font-weight:900}
+.p8-banner small{display:block;margin-top:14px;font-size:12px;color:rgba(255,255,255,.6);letter-spacing:.02em}
+
+/* ─── P9: ビッグデータ ─── */
+.p9-inner{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.p9-left h2{font-size:clamp(22px,2.8vw,32px);font-weight:900;color:#fff;line-height:1.4;margin-bottom:12px}
+.p9-left h2 span{color:var(--sky)}
+.p9-left p{font-size:15px;color:rgba(255,255,255,.7);line-height:1.85;margin-bottom:24px}
+.p9-formula{display:flex;flex-direction:column;gap:10px}
+.p9-layer{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:12px;padding:20px 24px;display:flex;align-items:center;gap:18px}
+.p9-layer-badge{padding:4px 12px;border-radius:6px;font-size:11px;font-weight:700;letter-spacing:.1em;white-space:nowrap}
+.p9-layer-badge.l1{background:var(--sky);color:#fff}
+.p9-layer-badge.l2{background:rgba(14,165,233,.25);color:var(--sky);border:1px solid rgba(14,165,233,.35)}
+.p9-layer-title{font-size:15px;font-weight:900;color:#fff;margin-bottom:3px}
+.p9-layer-sub{font-size:12px;color:rgba(255,255,255,.6)}
+.p9-times{text-align:center;font-size:26px;font-weight:900;color:var(--sky)}
+.p9-result{background:linear-gradient(135deg,var(--sky),var(--blue));border-radius:12px;padding:24px;text-align:center;box-shadow:0 8px 28px rgba(14,165,233,.3)}
+.p9-result-label{font-size:11px;font-weight:700;color:rgba(255,255,255,.75);letter-spacing:.15em;margin-bottom:8px}
+.p9-result-title{font-size:22px;font-weight:900;color:#fff;margin-bottom:6px}
+.p9-result-sub{font-size:13px;color:rgba(255,255,255,.85);line-height:1.65}
+
+/* ─── P10: 4ステップ ─── */
+.p10-arrows{display:grid;grid-template-columns:repeat(4,1fr);gap:0;position:relative;margin-top:48px}
+.p10-arrow{background:#fff;padding:32px 20px 28px;text-align:center;position:relative;clip-path:polygon(0 0,calc(100% - 20px) 0,100% 50%,calc(100% - 20px) 100%,0 100%,20px 50%);margin-right:-1px}
+.p10-arrow:first-child{clip-path:polygon(0 0,calc(100% - 20px) 0,100% 50%,calc(100% - 20px) 100%,0 100%)}
+.p10-arrow:last-child{clip-path:polygon(0 0,100% 0,100% 100%,0 100%,20px 50%)}
+.p10-arrow-inner{display:flex;flex-direction:column;align-items:center;gap:10px}
+.p10-icon{width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,var(--navy),var(--navy2));display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:4px}
+.p10-step-label{font-size:11px;font-weight:700;color:var(--sky);letter-spacing:.1em}
+.p10-step-title{font-size:15px;font-weight:900;color:var(--navy);line-height:1.3}
+
+/* ─── COMPARISON ─── */
+.comp-table{width:100%;border-collapse:collapse;border-radius:14px;overflow:hidden;border:1px solid var(--border)}
+.comp-table th{background:var(--off);padding:16px 18px;font-size:13px;font-weight:900;color:var(--navy);text-align:center;border-bottom:2px solid var(--border)}
+.comp-table th.ours{background:var(--navy);color:#fff}
+.comp-table th.ours .sub{display:block;font-size:11px;color:var(--sky);font-weight:700;margin-top:2px}
+.comp-table td{padding:14px 18px;font-size:13px;border-bottom:1px solid var(--border);text-align:center;background:#fff}
+.comp-table td.ours{background:#EFF6FF;font-weight:700;color:var(--navy)}
+.comp-table td.item{text-align:left;font-weight:700;background:var(--off)}
+.comp-table tr:last-child td{border-bottom:none}
+.cg{color:#16A34A;font-size:17px;font-weight:900}
+.cm{color:#CA8A04;font-size:17px}
+.cb{color:#DC2626;font-size:17px}
+
+/* ─── VOICE ─── */
+.voice-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.voice-card{background:#fff;border-radius:16px;padding:28px 26px;border:1px solid var(--border);box-shadow:0 2px 12px rgba(0,0,0,.05);display:flex;flex-direction:column;position:relative}
+.voice-qm{font-size:60px;line-height:1;color:var(--sky);opacity:.14;position:absolute;top:10px;left:20px;font-family:Georgia,serif}
+.voice-text{font-size:14px;line-height:1.85;color:var(--text);position:relative;z-index:1;padding-top:8px;flex:1}
+.voice-text strong{color:var(--navy);font-weight:900}
+.voice-author{display:flex;align-items:center;gap:12px;margin-top:20px;padding-top:18px;border-top:1px solid var(--border)}
+.voice-photo{width:52px;height:52px;border-radius:50%;background-size:cover;background-position:center;border:2px solid var(--sky);flex-shrink:0}
+.vp1{background-image:url('https://images.unsplash.com/photo-1560250097-0b93528c311a?w=200&q=80')}
+.vp2{background-image:url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&q=80')}
+.vp3{background-image:url('https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=200&q=80')}
+.voice-name{font-size:13px;font-weight:900;color:var(--navy)}
+.voice-co{font-size:11px;color:var(--muted);margin-top:2px;line-height:1.4}
+
+/* ─── PRICE (BLUR) ─── */
+.price-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.price-card{background:#fff;border-radius:14px;border:2px solid var(--border);padding:28px 20px;position:relative;transition:all .25s}
+.price-card.featured{border-color:var(--sky);box-shadow:0 0 0 4px rgba(14,165,233,.1)}
+.price-card:hover{transform:translateY(-3px);box-shadow:0 8px 28px rgba(0,0,0,.1)}
+.price-top-badge{position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:var(--sky);color:#fff;font-size:11px;font-weight:700;padding:4px 16px;border-radius:100px;white-space:nowrap}
+.price-plan-name{font-size:12px;font-weight:700;color:var(--muted);letter-spacing:.1em;margin-bottom:8px}
+.price-amt-wrap{margin-bottom:4px}
+.price-amt{font-size:36px;font-weight:900;color:var(--navy);line-height:1}
+.price-amt sub{font-size:13px;font-weight:400;color:var(--muted)}
+.price-amt.blurred{filter:blur(7px);user-select:none}
+.price-cycle{font-size:11px;color:var(--muted);margin-top:4px;margin-bottom:18px}
+.price-div{height:1px;background:var(--border);margin:14px 0}
+.price-feat{list-style:none;margin-bottom:0}
+.price-feat li{font-size:12px;color:var(--text);padding-left:18px;position:relative;line-height:1.4;margin-bottom:7px}
+.price-feat li.y::before{content:'✓';position:absolute;left:0;color:var(--green);font-weight:900}
+.price-feat li.n{color:var(--light)}
+.price-feat li.n::before{content:'−';position:absolute;left:0}
+.price-feat li .num{color:var(--blue);font-weight:700}
+.price-btn{display:block;text-align:center;padding:11px;margin-top:18px;border-radius:8px;font-size:13px;font-weight:700;text-decoration:none;background:var(--off);color:var(--navy);border:1.5px solid var(--border);transition:all .2s;cursor:pointer}
+.price-card.featured .price-btn{background:var(--sky);color:#fff;border-color:var(--sky)}
+.price-btn:hover{opacity:.85}
+
+/* ぼかしオーバーレイ */
+.price-blur-wrap{position:relative;overflow:hidden}
+.price-blur-overlay{position:absolute;bottom:0;left:0;right:0;height:60%;background:linear-gradient(to bottom,transparent,rgba(255,255,255,.97) 70%);display:flex;align-items:flex-end;padding-bottom:0;pointer-events:none}
+.price-blur-cta{position:absolute;bottom:0;left:0;right:0;text-align:center;pointer-events:auto}
+.price-blur-cta a{display:block;padding:12px;background:rgba(255,255,255,.95);color:var(--navy);font-size:12px;font-weight:700;text-decoration:none;border-top:1px solid var(--border)}
+.price-blur-cta a:hover{background:var(--sky);color:#fff;border-color:var(--sky)}
+.price-note{text-align:center;font-size:13px;color:var(--muted);margin-top:28px;padding:16px 24px;background:#FFFBEB;border-radius:8px;border:1px solid #FDE68A}
+.price-note strong{color:var(--navy)}
+.campaign-banner{max-width:1180px;margin:0 auto 0;padding:0 40px}
+.campaign-inner{background:linear-gradient(135deg,#FFF7ED,#FEF3C7);border:2px solid #F59E0B;border-radius:16px;padding:24px 36px;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;box-shadow:0 8px 28px rgba(245,158,11,.18);max-width:980px;margin-left:auto;margin-right:auto}
+.campaign-icon{font-size:42px;flex-shrink:0}
+.campaign-text{flex:1;min-width:240px}
+.campaign-tag{display:inline-block;background:#DC2626;color:#fff;font-size:11px;font-weight:900;letter-spacing:.1em;padding:4px 12px;border-radius:6px;margin-bottom:8px}
+.campaign-text h3{font-size:clamp(18px,2.2vw,24px);font-weight:900;color:var(--navy);line-height:1.4;margin-bottom:4px}
+.campaign-text h3 span{color:#DC2626}
+.campaign-text p{font-size:13px;color:var(--text);font-weight:500}
+.campaign-btn{display:inline-flex;align-items:center;gap:6px;background:var(--navy);color:#fff;font-size:14px;font-weight:900;padding:13px 24px;border-radius:8px;text-decoration:none;transition:all .2s;white-space:nowrap;flex-shrink:0}
+.campaign-btn:hover{background:var(--navy2);transform:translateY(-2px);box-shadow:0 8px 20px rgba(11,31,66,.3)}
+
+/* ─── FORM SECTION ─── */
+.form-sec{background:var(--off);padding:96px 40px;border-top:1px solid var(--border)}
+.form-layout{max-width:1180px;margin:0 auto;display:grid;grid-template-columns:1fr 480px;gap:80px;align-items:start}
+.form-left h2{font-size:clamp(22px,2.5vw,32px);font-weight:900;color:var(--navy);line-height:1.35;margin-bottom:16px}
+.form-left p{font-size:15px;color:var(--muted);line-height:1.8;margin-bottom:28px}
+.form-merits{display:flex;flex-direction:column;gap:12px}
+.merit-item{display:flex;align-items:flex-start;gap:12px}
+.merit-icon{width:36px;height:36px;border-radius:8px;background:var(--sky-l);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;margin-top:2px}
+.merit-text h4{font-size:14px;font-weight:900;color:var(--navy);margin-bottom:3px}
+.merit-text p{font-size:13px;color:var(--muted)}
+.form-box{background:#fff;border-radius:16px;border:1px solid var(--border);padding:36px 32px;box-shadow:0 4px 24px rgba(0,0,0,.06)}
+.form-box-title{font-size:18px;font-weight:900;color:var(--navy);text-align:center;margin-bottom:4px}
+.form-box-sub{font-size:12px;color:var(--muted);text-align:center;margin-bottom:24px}
+
+/* ─── FOOTER ─── */
+footer{background:var(--navy);padding:48px 40px 32px}
+.foot-in{max-width:1180px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px}
+.foot-logo{display:flex;align-items:center}
+.foot-logo-img{height:40px !important;width:auto !important;max-height:40px;filter:brightness(0) invert(1)}
+.foot-meta{font-size:12px;color:rgba(255,255,255,.4);text-align:right}
+.foot-meta strong{color:rgba(255,255,255,.7)}
+
+/* ─── インラインCTA（各セクション末尾） ─── */
+.inline-cta{text-align:center;margin-top:36px}
+.inline-cta-link{display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:700;color:var(--sky);text-decoration:none;padding:12px 24px;border:1.5px solid var(--sky);border-radius:100px;background:#fff;transition:all .2s}
+.inline-cta-link:hover{background:var(--sky);color:#fff;transform:translateY(-2px);box-shadow:0 6px 18px rgba(14,165,233,.25)}
+.inline-cta-link.dark{color:var(--sky);border-color:rgba(14,165,233,.4);background:transparent}
+.inline-cta-link.dark:hover{background:var(--sky);color:#fff;border-color:var(--sky)}
+.inline-cta-arrow{font-size:13px;transition:transform .2s}
+.inline-cta-link:hover .inline-cta-arrow{transform:translateX(4px)}
+
+/* ─── REVEAL ─── */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}
+.reveal.in{opacity:1;transform:none}
+.rd1{transition-delay:.1s}.rd2{transition-delay:.2s}.rd3{transition-delay:.3s}
+
+/* ─── RESPONSIVE ─── */
+@media(max-width:1024px){
+  .hero-inner{grid-template-columns:1fr;gap:32px}
+  .hero{min-height:auto;padding:100px 32px 60px}
+}
+@media(max-width:960px){
+  .about-inner,.how-grid,.form-layout,.p9-inner{grid-template-columns:1fr;gap:40px}
+  .p8-vs{grid-template-columns:1fr;gap:24px}
+  .p8-card.good{transform:none}
+  .step-row,.step-row.flip{grid-template-columns:1fr}
+  .step-photo{min-height:220px}
+  .cases-grid,.voice-grid{grid-template-columns:1fr 1fr}
+  .price-grid,.medals-grid{grid-template-columns:1fr 1fr}
+  .nav-links{display:none}
+  .sec{padding:72px 24px}
+  .prob-grid{grid-template-columns:1fr}
+  .trust-div{display:none}
+  .p10-arrows{grid-template-columns:1fr 1fr;gap:12px}
+  .p10-arrow,.p10-arrow:first-child,.p10-arrow:last-child{clip-path:none;border-radius:12px;border:1px solid var(--border)}
+}
+@media(max-width:600px){
+  .cases-grid,.voice-grid,.price-grid,.medals-grid{grid-template-columns:1fr}
+  .fr{grid-template-columns:1fr}
+  .comp-table{display:block;overflow-x:auto}
+  .cta-band-in{flex-direction:column;text-align:center}
+  .about-nums{grid-template-columns:1fr}
+  .foot-meta{text-align:left}
+  .hero-kpi{flex-wrap:wrap}
+  .kpi-item{min-width:40%;border-right:none;border-bottom:1px solid rgba(255,255,255,.1)}
+}
+</style>
+</head>
+<body>
+<div class="is-lp">
+
+<!-- ■ NAV -->
+<header class="nav" id="mainNav">
+  <div class="nav-logo">
+    <img src="./images/logo.png" alt="INSIGHT SALES" class="nav-logo-img">
+  </div>
+  <nav class="nav-links">
+    <a class="nav-link" href="#problem">課題</a>
+    <a class="nav-link" href="#steps">サービス</a>
+    <a class="nav-link" href="#cases">事例</a>
+    <a class="nav-link" href="#price">料金</a>
+    <a class="nav-link" href="#form">資料請求</a>
+  </nav>
+  <a href="#form" class="nav-btn">無料で資料請求する →</a>
+</header>
+
+<!-- ■ HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-ov"></div>
+  <div class="hero-dots"></div>
+  <div class="hero-inner">
+    <div class="hero-left">
+      <div class="hero-badge"><span></span>Webコンサル会社 特化サービス</div>
+      <h1 class="hero-h1">
+        クライアントの集客は<br>
+        うまくいっているのに、<br>
+        なぜ自社の<em>新規商談</em>が<br>
+        増えないのか。
+      </h1>
+      <p class="hero-lead">
+        その答えを<strong style="color:#fff">多くのWebコンサル会社</strong>が出しました。<br>
+        詳しくは、無料の資料で。
+      </p>
+      <div class="hero-kpi">
+        <div class="kpi-item"><span class="kpi-n">200<sub>社超</sub></span><div class="kpi-l">導入企業数</div></div>
+        <div class="kpi-item"><span class="kpi-n">最大3<sub>%</sub></span><div class="kpi-l">アポ獲得率</div></div>
+        <div class="kpi-item"><span class="kpi-n">97.8<sub>%</sub></span><div class="kpi-l">顧客満足度</div></div>
+        <div class="kpi-item"><span class="kpi-n">4億円<sub>以上</sub></span><div class="kpi-l">累計売上貢献</div></div>
+      </div>
+      <div class="hero-tags">
+        <div class="hero-tag">🏢 東証グロース上場 IT企業が運営</div>
+        <div class="hero-tag">🧠 23年間の営業ノウハウ × AI</div>
+        <div class="hero-tag">🤝 1,000社のパートナーNW</div>
+      </div>
+    </div>
+    <div class="hero-form">
+      <div class="form-eyebrow">FREE DOWNLOAD</div>
+      <div class="form-title">📄 無料で資料請求する</div>
+      <div class="form-sub">30秒で入力完了。1営業日以内にご連絡します。</div>
+      <div id="hfw">
+        <div class="fr">
+          <div class="ff"><label>会社名<span class="r">必須</span></label><input type="text" name="company" placeholder="株式会社〇〇" required></div>
+          <div class="ff"><label>お名前<span class="r">必須</span></label><input type="text" name="name" placeholder="山田 太郎" required></div>
+        </div>
+        <div class="ff"><label>メールアドレス<span class="r">必須</span></label><input type="email" name="email" placeholder="taro@example.com" required></div>
+        <div class="ff"><label>電話番号<span class="r">必須</span></label><input type="tel" name="phone" placeholder="03-0000-0000" required></div>
+        <div class="ff"><label>現在の月間新規商談数</label>
+          <select name="meetings"><option value="">選択してください</option><option>0〜2件</option><option>3〜5件</option><option>6〜10件</option><option>11件以上</option></select>
+        </div>
+        <div class="ff"><label>お問い合わせ内容</label>
+          <select name="inquiry"><option value="">選択してください</option><option>資料を受け取りたい</option><option>サービス詳細を聞きたい</option><option>まずは情報交換したい</option><option>料金・プランを確認したい</option></select>
+        </div>
+        <button class="f-submit" onclick="submitF('hfw','hfd','hero')">資料を無料で受け取る →</button>
+        <p class="f-privacy">送信することで<a href="#" style="color:var(--sky)">プライバシーポリシー</a>に同意したものとみなします</p>
+      </div>
+      <div id="hfd" class="f-done"><div class="ck">✅</div><h4>送信が完了しました</h4><p>担当者より1営業日以内にご連絡いたします。</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ■ TRUST BAR -->
+<div class="trust">
+  <div class="trust-inner">
+    <div class="trust-badge"><div class="trust-icon">🏢</div><div class="trust-text"><strong>東証グロース上場</strong><span>上場IT企業が運営</span></div></div>
+    <div class="trust-div"></div>
+    <div class="trust-badge"><div class="trust-icon">📊</div><div class="trust-text"><strong>累計5万件</strong><span>販売支援データ</span></div></div>
+    <div class="trust-div"></div>
+    <div class="trust-badge"><div class="trust-icon">📞</div><div class="trust-text"><strong>50万件以上</strong><span>通算営業ログ</span></div></div>
+    <div class="trust-div"></div>
+    <div class="trust-badge"><div class="trust-icon">🤝</div><div class="trust-text"><strong>創業23年</strong><span>1,000社の代理店NW</span></div></div>
+    <div class="trust-div"></div>
+    <div class="trust-badge"><div class="trust-icon">😊</div><div class="trust-text"><strong>顧客満足度97.8%</strong><span>（アンケート調査）</span></div></div>
+  </div>
+</div>
+
+<!-- ■ MEDALS（実績視覚化） -->
+<section class="medals">
+  <div class="medals-inner">
+    <div class="medals-head reveal">
+      <h2><span>200社以上</span>の中で、<br>Webコンサル会社が成果を出しています。</h2>
+    </div>
+    <div class="medals-grid">
+      <div class="medal-card gold reveal">
+        <span class="medal-icon">🏆</span>
+        <div class="medal-num">200<sub>社超</sub></div>
+        <div class="medal-label">導入企業数</div>
+        <div class="medal-sub">Webコンサル・SaaS・制作会社など</div>
+      </div>
+      <div class="medal-card sky reveal rd1">
+        <span class="medal-icon">🎯</span>
+        <div class="medal-num">最大<sub></sub>3<sub>%</sub></div>
+        <div class="medal-label">アポイント獲得率</div>
+        <div class="medal-sub">業界平均の5〜10倍を実現</div>
+      </div>
+      <div class="medal-card silver reveal rd2">
+        <span class="medal-icon">💰</span>
+        <div class="medal-num">4億円<sub>以上</sub></div>
+        <div class="medal-label">累計売上創出貢献</div>
+        <div class="medal-sub">全導入企業の合計実績</div>
+      </div>
+      <div class="medal-card green reveal rd3">
+        <span class="medal-icon">⭐</span>
+        <div class="medal-num">97.8<sub>%</sub></div>
+        <div class="medal-label">顧客満足度</div>
+        <div class="medal-sub">アンケート調査による</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ■ PROBLEM -->
+<section class="sec sec-off" id="problem">
+  <div class="sec-inner">
+    <div class="sec-head">
+      <div class="sec-tag">Problem</div>
+      <h2 class="sec-h2">Webコンサル会社が直面する<br>「営業の壁」</h2>
+    </div>
+    <div class="prob-grid">
+      <div class="prob-card reveal">
+        <div class="prob-num">1</div>
+        <p>クライアントの成果は出ているのに、<strong>自社の新規商談が一向に増えない</strong></p>
+      </div>
+      <div class="prob-card reveal rd1">
+        <div class="prob-num">2</div>
+        <p><strong>「Webコンサルできます」</strong>では差別化できず、相見積もりで価格競争になる</p>
+      </div>
+      <div class="prob-card reveal">
+        <div class="prob-num">3</div>
+        <p>新規開拓が<strong>社長・代表頼みの属人化</strong>から、いつまでも抜け出せない</p>
+      </div>
+      <div class="prob-card reveal rd1">
+        <div class="prob-num">4</div>
+        <p><strong>採用した営業マンが育つ前に辞め</strong>、ノウハウが蓄積されないまま</p>
+      </div>
+      <div class="prob-card prob-card-full reveal">
+        <div class="prob-num">5</div>
+        <p>Web広告・SEO・SNSの受け身集客に頼りきりで、<strong>能動的な営業ルートが一切ない</strong></p>
+      </div>
+    </div>
+    <div class="prob-banner reveal">
+      <div class="prob-banner-icon">💡</div>
+      <p>これは「営業力」の問題ではありません。<span>「誰に・何を・どう届けるか」の設計</span>の問題です。Webコンサルが持つ強みを、正しい戦略設計で新規開拓に活かすだけです。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ■ CTA BAND 1 -->
+<section class="cta-band">
+  <div class="cta-band-in">
+    <div class="cta-band-text">
+      <h3>まずは<span>無料の資料</span>でサービス詳細を確認</h3>
+      <p>料金・実績・導入事例まで、すべて掲載</p>
+    </div>
+    <div class="cta-band-btns">
+      <a href="#form" class="btn-cta">📄 無料で資料請求する →</a>
+      <a href="#cases" class="btn-ghost">実績を見る</a>
+    </div>
+  </div>
+</section>
+
+<!-- ■ ABOUT US -->
+<section class="sec">
+  <div class="sec-inner">
+    <div class="about-inner">
+      <div class="about-text">
+        <span class="about-tag">About Us</span>
+        <h2 class="about-h2">Webコンサル会社こそ、<br><span class="hl">仕組み型営業</span>に<br>最も向いている。</h2>
+        <p class="about-p">クライアントのCPA・CVRを改善するために使っているデータドリブンな発想を、<strong>自社の新規営業に適用したことはありますか？</strong></p>
+        <p class="about-p">運営は<strong>東証グロース上場のIT企業</strong>。創業23年間で蓄積した5万件の販売支援データを活かし、Webコンサル会社様が「仕組みで新規商談を創る」ための支援を行います。</p>
+        <div class="about-nums">
+          <div class="about-num"><div class="n">23<sub>年</sub></div><div class="l">事業継続年数</div></div>
+          <div class="about-num"><div class="n">5万<sub>件</sub></div><div class="l">販売支援実績</div></div>
+          <div class="about-num"><div class="n">1,000<sub>社</sub></div><div class="l">パートナーNW</div></div>
+        </div>
+      </div>
+      <div class="about-photos reveal">
+        <div class="ap tall ap1"></div>
+        <div class="ap ap2"></div>
+        <div class="ap ap3"></div>
+        <div class="about-badge-float">
+          <div class="abf-icon">★</div>
+          <div class="abf-text">
+            <strong>東証グロース上場</strong>
+            <span>IT・DXソリューション企業</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="inline-cta">
+      <a href="#how" class="inline-cta-link">▼ 仕組みの中身を見る</a>
+    </div>
+  </div>
+</section>
+
+<!-- ■ HOW IT WORKS -->
+<section class="sec sec-off" id="how">
+  <div class="sec-inner">
+    <div class="sec-head">
+      <div class="sec-tag">How It Works</div>
+      <h2 class="sec-h2">AIが、成約確率の高い企業を<br>自動で特定する</h2>
+    </div>
+    <div class="how-grid">
+      <div class="how-left reveal">
+        <h3>500万件 × 5万件の<br><span>ビッグデータ</span>が武器</h3>
+        <p>国内ほぼ全法人の500万件マクロデータと、23年間の5万件成約ログを掛け合わせることで、<strong>「御社のサービスに反応しやすい企業」</strong>をピンポイントで特定します。</p>
+        <p>「CPA高騰で悩む工務店」「AIO対策ニーズがある不動産会社」など、課題が顕在化した企業だけにアプローチするため、一般的なテレアポ代行とは成果が根本的に異なります。</p>
+      </div>
+      <div class="how-right reveal rd1">
+        <div class="fml">
+          <div class="fml-b"><div class="fml-ic">🌐</div><div><div class="fml-t">500万件の法人データ</div><div class="fml-s">業種・売上・求人・Webトラッキング等</div></div></div>
+          <div class="fml-x">×</div>
+          <div class="fml-b"><div class="fml-ic">🧠</div><div><div class="fml-t">5万件の成約ログ</div><div class="fml-s">誰が・いつ・何に反応し・なぜ導入したか</div></div></div>
+          <div class="fml-line"></div>
+          <div class="fml-res"><div class="fml-ic">🎯</div><div><div class="fml-t">成約確度予測（Propensity Scoring）</div><div class="fml-s">御社専用の「黄金リスト」を自動生成</div></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ■ CASES -->
+<section class="sec sec-off" id="cases">
+  <div class="sec-inner">
+    <div class="sec-head">
+      <div class="sec-tag">Case Studies</div>
+      <h2 class="sec-h2">導入企業の成功事例</h2>
+      <p class="sec-p">実際にインサイトセールスを導入いただいた企業様の成果をご紹介します。</p>
+    </div>
+    <div class="cases-grid">
+      <div class="case-card reveal">
+        <div class="case-img ci1">
+          <div class="ci-tag">Webコンサル・広告制作</div>
+          <div class="ci-over">
+            <div class="ci-logo"><img src="./images/face-webroom.png" alt="三宅 準一様"></div>
+            <div class="ci-meta"><div class="ci-meta-n">株式会社Webroom</div><div class="ci-meta-c">兵庫県・住宅業界特化</div></div>
+          </div>
+        </div>
+        <div class="case-body">
+          <div class="case-quote">"住宅業界の<span class="hl">現場感</span>が武器になる、リアル営業の最前線。"</div>
+          <div class="case-stats">
+            <div><div class="case-stat-n">温度感<sub>UP</sub></div><div class="case-stat-l">広告流入より商談化</div></div>
+            <div><div class="case-stat-n">初<sub>受注</sub></div><div class="case-stat-l">愛知県・工務店</div></div>
+          </div>
+          <p class="case-sum">住宅会社経営の経験を活かし、地方ビルダー・工務店に特化。独自の現場感トークで信頼構築を実現。</p>
+        </div>
+      </div>
+      <div class="case-card reveal rd1">
+        <div class="case-img ci2">
+          <div class="ci-tag">宿泊業特化WEBコンサル</div>
+          <div class="ci-over">
+            <div class="ci-logo"><img src="./images/face-infinity.png" alt="米澤 彪様"></div>
+            <div class="ci-meta"><div class="ci-meta-n">株式会社Infinity Soar</div><div class="ci-meta-c">宿泊業界・運営改善支援</div></div>
+          </div>
+        </div>
+        <div class="case-body">
+          <div class="case-quote">"一人では辿り着けなかった、<span class="hl">次の一手</span>。"</div>
+          <div class="case-stats">
+            <div><div class="case-stat-n">役割<sub>分担</sub></div><div class="case-stat-l">営業と現場を切り分け</div></div>
+            <div><div class="case-stat-n">顧問<sub>契約</sub></div><div class="case-stat-l">長期伴走型へ転換</div></div>
+          </div>
+          <p class="case-sum">一人で担っていた営業の入口づくりを外部化。本来の価値提供に集中できる体制を構築。</p>
+        </div>
+      </div>
+      <div class="case-card reveal rd2">
+        <div class="case-img ci3">
+          <div class="ci-tag">Webコンテンツ制作・コンサル</div>
+          <div class="ci-over">
+            <div class="ci-logo">L</div>
+            <div class="ci-meta"><div class="ci-meta-n">株式会社リーフレイン</div><div class="ci-meta-c">東京都・編集/マーケ支援</div></div>
+          </div>
+        </div>
+        <div class="case-body">
+          <div class="case-quote">"強みはある。でも<span class="hl">営業は属人化</span>していた。"</div>
+          <div class="case-stats">
+            <div><div class="case-stat-n">1,000<sub>名</sub></div><div class="case-stat-l">専門ライターNW</div></div>
+            <div><div class="case-stat-n">400<sub>媒体</sub></div><div class="case-stat-l">これまでの掲載数</div></div>
+          </div>
+          <p class="case-sum">紹介・人脈頼みの営業を脱却。再現性のある仕組みを構築し、価値観の合う企業との出会いを増やす。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ■ CTA BAND 2: 事例の下 -->
+<section class="cta-band">
+  <div class="cta-band-in">
+    <div class="cta-band-text">
+      <h3>もっと<span>詳しい事例</span>は資料で公開中</h3>
+      <p>具体的な数値・施策・受注プロセスまで、すべて掲載</p>
+    </div>
+    <div class="cta-band-btns">
+      <a href="#form" class="btn-cta">📄 無料で資料請求する →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ■ P8: 私たちは「営業代行」でも「コンサル」でもない -->
+<section class="sec">
+  <div class="sec-inner">
+    <div class="sec-head">
+      <div class="sec-tag">Our Position</div>
+      <h2 class="sec-h2">私たちは「営業代行」でも<br>「コンサル」でもありません。</h2>
+      <p class="sec-p">3つのポジションを並べてみてください。私たちが目指すのは、まったく違う立ち位置です。</p>
+    </div>
+
+    <div class="p8-vs reveal">
+      <!-- BAD 1: コンサル -->
+      <div class="p8-card bad">
+        <div class="p8-card-mark">✕</div>
+        <div class="p8-card-icon">💬</div>
+        <div class="p8-card-label">CONSULTING</div>
+        <div class="p8-card-name">コンサル</div>
+        <div class="p8-card-desc">単なるアドバイスで<br>終わってしまう。<br>実行支援がない。</div>
+      </div>
+
+      <!-- GOOD: 私たち -->
+      <div class="p8-card good">
+        <div class="p8-card-tag">★ 私たちのポジション</div>
+        <div class="p8-card-mark">✓</div>
+        <div class="p8-card-icon">⚡</div>
+        <div class="p8-card-label">INSIGHT SALES</div>
+        <div class="p8-card-name">伴走型の<br>仕組み構築</div>
+        <div class="p8-card-desc">売上を生み続ける<br>"仕組みそのもの"を、<br>御社の中に作る。</div>
+      </div>
+
+      <!-- BAD 2: 営業代行 -->
+      <div class="p8-card bad">
+        <div class="p8-card-mark">✕</div>
+        <div class="p8-card-icon">📞</div>
+        <div class="p8-card-label">SALES AGENCY</div>
+        <div class="p8-card-name">営業代行</div>
+        <div class="p8-card-desc">アポ獲得だけを<br>担って終わる。<br>ノウハウが残らない。</div>
+      </div>
+    </div>
+
+    <div class="p8-banner reveal rd1">
+      <p>売上を<span>"外注する"</span>のではなく、<br>売上を<span>"生み続ける力"</span>を社内に残す。</p>
+      <small>ターゲット設計・営業導線設計・商談の意思決定設計を一体で構築</small>
+    </div>
+  </div>
+</section>
+
+<!-- ■ P9: 500万件×5万件のビッグデータ -->
+<section class="sec" style="background:var(--navy)">
+  <div class="sec-inner">
+    <div class="p9-inner">
+      <div class="p9-left reveal">
+        <div class="sec-tag">AI × Insight Sales</div>
+        <h2 class="p9-left h2">AI×インサイトセールスの正体<br><span>「500万件×5万件」</span>のビッグデータ</h2>
+        <p>一般的なリストを超えた「高精度な予測」を実現する、当社独自のデータ構造。2つのレイヤーを掛け合わせることで、AIは御社のサービスに「今まさに反応する企業」だけを特定します。</p>
+      </div>
+      <div class="reveal rd1">
+        <div class="p9-formula">
+          <div class="p9-layer">
+            <div class="p9-layer-badge l1">LAYER 1: MACRO</div>
+            <div>
+              <div class="p9-layer-title">500万件の法人データ</div>
+              <div class="p9-layer-sub">国内ほぼ全ての法人データ（業種、売上、求人、Webトラッキング等）</div>
+            </div>
+          </div>
+          <div class="p9-times">×</div>
+          <div class="p9-layer">
+            <div class="p9-layer-badge l2">LAYER 2: MICRO</div>
+            <div>
+              <div class="p9-layer-title">5万件の営業成功ログ</div>
+              <div class="p9-layer-sub">誰が、いつ、どんな言葉に反応し、どんな課題で導入したか</div>
+            </div>
+          </div>
+          <div class="p9-times" style="margin:4px 0">↓</div>
+          <div class="p9-result">
+            <div class="p9-result-label">RESULT</div>
+            <div class="p9-result-title">Propensity Scoring（成約確度予測）</div>
+            <div class="p9-result-sub">2つのデータを掛け合わせ、AIは一般的なリストを超えた「高精度な予測」を実行します。</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ■ P10: 4ステップ -->
+<section class="sec sec-off">
+  <div class="sec-inner">
+    <div class="sec-head">
+      <div class="sec-tag">Our Process</div>
+      <h2 class="sec-h2">AIを活用して営業プロセスを<br>効率化する4つのステップ</h2>
+      <p class="sec-p">導入後にまず取り組む、成果を最大化するための4ステップです。</p>
+    </div>
+    <div class="p10-arrows reveal">
+      <div class="p10-arrow">
+        <div class="p10-arrow-inner">
+          <div class="p10-icon">👤</div>
+          <div class="p10-step-label">STEP 1</div>
+          <div class="p10-step-title">ペルソナ設計</div>
+        </div>
+      </div>
+      <div class="p10-arrow">
+        <div class="p10-arrow-inner">
+          <div class="p10-icon">🏆</div>
+          <div class="p10-step-label">STEP 2</div>
+          <div class="p10-step-title">競合優位性の整理</div>
+        </div>
+      </div>
+      <div class="p10-arrow">
+        <div class="p10-arrow-inner">
+          <div class="p10-icon">📝</div>
+          <div class="p10-step-label">STEP 3</div>
+          <div class="p10-step-title">営業スクリプトの作成</div>
+        </div>
+      </div>
+      <div class="p10-arrow">
+        <div class="p10-arrow-inner">
+          <div class="p10-icon">🎯</div>
+          <div class="p10-step-label">STEP 4</div>
+          <div class="p10-step-title">リスト条件の選定</div>
+        </div>
+      </div>
+    </div>
+    <div class="inline-cta">
+      <a href="#form" class="inline-cta-link">▼ 詳しい支援内容は資料で <span class="inline-cta-arrow">→</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ■ COMPARISON -->
+<section class="sec">
+  <div class="sec-inner">
+    <div class="sec-head">
+      <div class="sec-tag">Comparison</div>
+      <h2 class="sec-h2">他社サービスとの比較</h2>
+    </div>
+    <div class="reveal" style="overflow-x:auto">
+      <table class="comp-table">
+        <thead>
+          <tr>
+            <th style="text-align:left;width:200px">比較項目</th>
+            <th class="ours">AIインサイトセールス<span class="sub">★ 推奨</span></th>
+            <th>テレアポ代行</th>
+            <th>SFAツール系</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td class="item">ペルソナ設計</td><td class="ours"><span class="cg">◎</span> ターゲット戦略から設計</td><td><span class="cb">✕</span> 対応なし</td><td><span class="cb">✕</span> 対応なし</td></tr>
+          <tr><td class="item">競合優位性の整理</td><td class="ours"><span class="cg">◎</span> 強みを言語化して設計</td><td><span class="cb">✕</span> 対応なし</td><td><span class="cb">✕</span> 対応なし</td></tr>
+          <tr><td class="item">トークスクリプト作成</td><td class="ours"><span class="cg">◎</span> AI＋実績データで作成</td><td><span class="cm">△</span> 簡易版のみ</td><td><span class="cb">✕</span> 対応なし</td></tr>
+          <tr><td class="item">リスト作成精度</td><td class="ours"><span class="cg">◎</span> 成約ログ5万件で高精度</td><td><span class="cm">△</span> 一般リストのみ</td><td><span class="cm">○</span> ツールは高品質</td></tr>
+          <tr><td class="item">平均アポ率</td><td class="ours"><span class="cg">◎</span> 業界平均の5〜10倍</td><td><span class="cm">△</span> 業界平均並み</td><td><span class="cm">○</span> 一部実績あり</td></tr>
+          <tr><td class="item">サポート体制</td><td class="ours"><span class="cg">◎</span> 月次で伴走・PDCA</td><td><span class="cb">✕</span> 納品のみ</td><td><span class="cm">△</span> 問い合わせ対応のみ</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="inline-cta">
+      <a href="#form" class="inline-cta-link">▼ 比較表の詳細は資料で <span class="inline-cta-arrow">→</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ■ CTA BAND 3 -->
+<section class="cta-band">
+  <div class="cta-band-in">
+    <div class="cta-band-text">
+      <h3>気になった方は、<span>まず資料で全容を確認</span></h3>
+      <p>30秒の入力で、すべての疑問が解消します</p>
+    </div>
+    <div class="cta-band-btns">
+      <a href="#form" class="btn-cta">📄 無料で資料請求する →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ■ CAMPAIGN BANNER（料金上部） -->
+<!-- ■ PRICE（ぼかし付き） -->
+<section class="sec" id="price">
+  <div class="sec-inner">
+    <div class="sec-head">
+      <div class="sec-tag">Pricing</div>
+      <h2 class="sec-h2">料金プラン</h2>
+      <p class="sec-p">まずはスタンダードプランからスタートする企業様が最も多いです。</p>
+    </div>
+
+    <!-- CAMPAIGN BANNER（料金内） -->
+    <div class="campaign-inner reveal" style="margin-bottom:32px">
+      <div class="campaign-icon">🎁</div>
+      <div class="campaign-text">
+        <div class="campaign-tag">★ 期間限定キャンペーン中</div>
+        <h3>ただいま<span>初期費用50万円OFF</span></h3>
+        <p>キャンペーンにより料金に変動があるため、正確な料金は資料にてご確認ください</p>
+      </div>
+      <a href="#form" class="campaign-btn">📄 資料を受け取る →</a>
+    </div>
+
+    <div class="price-grid">
+      <!-- LIGHT -->
+      <div class="price-card reveal">
+        <div class="price-plan-name">LIGHT</div>
+        <div class="price-amt-wrap">
+          <div class="price-amt">10<sub>万円/月</sub></div>
+        </div>
+        <div class="price-cycle">×12ヶ月　初期費用 50万円</div>
+        <div class="price-div"></div>
+        <ul class="price-feat">
+          <li class="y">商材販売権（5商材）</li>
+          <li class="y">商材管理システム提供</li>
+          <li class="n">テレアポ代行</li>
+          <li class="n">フォーム営業</li>
+          <li class="n">定例ミーティング</li>
+        </ul>
+        <a href="#form" class="price-btn">詳細を資料で確認</a>
+      </div>
+
+      <!-- STANDARD (BLURRED + FEATURED) -->
+      <div class="price-card featured reveal rd1">
+        <div class="price-top-badge">🔥 Webコンサルに最適</div>
+        <div class="price-plan-name">STANDARD</div>
+        <div class="price-amt-wrap">
+          <div class="price-amt blurred">35万円/月</div>
+        </div>
+        <div class="price-cycle" style="filter:blur(4px);user-select:none">×12ヶ月　初期費用 50万円</div>
+        <div class="price-div"></div>
+        <div class="price-blur-wrap">
+          <ul class="price-feat" style="margin-bottom:80px">
+            <li class="y">全商材販売権</li>
+            <li class="y">テレアポ代行</li>
+            <li class="y">フォーム営業 無料</li>
+            <li class="y" style="filter:blur(4px);user-select:none">定例ミーティング</li>
+            <li class="y" style="filter:blur(4px);user-select:none">AI営業スクリプト作成</li>
+            <li class="y" style="filter:blur(4px);user-select:none">共催セミナー 年●件まで無料</li>
+          </ul>
+          <div class="price-blur-overlay"></div>
+          <div class="price-blur-cta">
+            <a href="#form">📄 詳細は資料でご確認ください →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- PREMIUM (BLURRED) -->
+      <div class="price-card reveal rd2">
+        <div class="price-plan-name">PREMIUM</div>
+        <div class="price-amt-wrap">
+          <div class="price-amt blurred">50万円/月</div>
+        </div>
+        <div class="price-cycle" style="filter:blur(4px);user-select:none">×12ヶ月　初期費用 50万円</div>
+        <div class="price-div"></div>
+        <div class="price-blur-wrap">
+          <ul class="price-feat" style="margin-bottom:80px">
+            <li class="y">スタンダードの全内容</li>
+            <li class="y">テレアポ代行 増量</li>
+            <li class="y">フォーム営業 増量</li>
+            <li class="y" style="filter:blur(4px);user-select:none">共催セミナー 年●件まで無料</li>
+            <li class="y" style="filter:blur(4px);user-select:none">セミナー講師代行●回無料</li>
+            <li class="y" style="filter:blur(4px);user-select:none">●●●●●●●●●</li>
+          </ul>
+          <div class="price-blur-overlay"></div>
+          <div class="price-blur-cta">
+            <a href="#form">📄 詳細は資料でご確認ください →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- ADVANCE (BLURRED) -->
+      <div class="price-card reveal rd3">
+        <div class="price-plan-name">ADVANCE</div>
+        <div class="price-amt-wrap">
+          <div class="price-amt blurred">70万円/月</div>
+        </div>
+        <div class="price-cycle" style="filter:blur(4px);user-select:none">×12ヶ月　初期費用 50万円</div>
+        <div class="price-div"></div>
+        <div class="price-blur-wrap">
+          <ul class="price-feat" style="margin-bottom:80px">
+            <li class="y">プレミアムの全内容</li>
+            <li class="y">テレアポ代行 最大規模</li>
+            <li class="y">フォーム営業 最大規模</li>
+            <li class="y" style="filter:blur(4px);user-select:none">共催セミナー 年●件まで無料</li>
+            <li class="y" style="filter:blur(4px);user-select:none">●●●●●●●●●</li>
+            <li class="y" style="filter:blur(4px);user-select:none">●●●●●●●●●</li>
+          </ul>
+          <div class="price-blur-overlay"></div>
+          <div class="price-blur-cta">
+            <a href="#form">📄 詳細は資料でご確認ください →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p class="price-note reveal">
+      🔒 <strong>キャンペーンによる料金変動のため、正確な金額・適用条件はLP上では非公開</strong>としております。<br>
+      ご検討中の方は資料をお取り寄せください。詳細価格・全プラン内容・割引適用条件をすべて記載しております。
+    </p>
+  </div>
+</section>
+
+<!-- ■ FORM -->
+<section class="form-sec" id="form">
+  <div class="form-layout">
+    <div class="form-left">
+      <h2>「資料を見る」だけで、<br>変わることがあります。</h2>
+      <p>料金・実績・全プランの詳細を、すべて1冊にまとめました。<br>1営業日以内に担当者よりご連絡いたします。</p>
+      <div class="form-merits">
+        <div class="merit-item"><div class="merit-icon">📊</div><div class="merit-text"><h4>業界別の実績データ</h4><p>導入企業の具体的な成果数値と施策内容</p></div></div>
+        <div class="merit-item"><div class="merit-icon">💰</div><div class="merit-text"><h4>全プランの正確な料金</h4><p>キャンペーン適用後の本当の価格・割引条件</p></div></div>
+        <div class="merit-item"><div class="merit-icon">🎁</div><div class="merit-text"><h4>初期費用50万円OFFの条件</h4><p>期間限定キャンペーンの適用条件を掲載</p></div></div>
+        <div class="merit-item"><div class="merit-icon">🗺️</div><div class="merit-text"><h4>導入ロードマップ</h4><p>契約〜成果安定化までの3フェーズを解説</p></div></div>
+      </div>
+    </div>
+    <div class="form-box">
+      <div class="form-box-title">📄 無料で資料請求する</div>
+      <div class="form-box-sub">1営業日以内に担当者よりご連絡いたします</div>
+      <div id="mfw">
+        <div class="ff"><label>会社名<span class="r">必須</span></label><input type="text" name="company" placeholder="株式会社〇〇" required></div>
+        <div class="ff"><label>お名前<span class="r">必須</span></label><input type="text" name="name" placeholder="山田 太郎" required></div>
+        <div class="ff"><label>メールアドレス<span class="r">必須</span></label><input type="email" name="email" placeholder="taro@example.com" required></div>
+        <div class="ff"><label>電話番号<span class="r">必須</span></label><input type="tel" name="phone" placeholder="03-0000-0000" required></div>
+        <div class="ff"><label>現在の月間新規商談数</label><select name="meetings"><option value="">選択してください</option><option>0〜2件</option><option>3〜5件</option><option>6〜10件</option><option>11件以上</option></select></div>
+        <div class="ff"><label>お問い合わせ内容</label><select name="inquiry"><option value="">選択してください</option><option>資料を受け取りたい</option><option>サービス詳細を聞きたい</option><option>料金・プランを確認したい</option><option>他社比較をしたい</option></select></div>
+        <button class="f-submit" onclick="submitF('mfw','mfd','footer')">資料を無料で受け取る →</button>
+        <p class="f-privacy">送信することで<a href="#" style="color:var(--sky)">プライバシーポリシー</a>に同意したものとみなします。</p>
+      </div>
+      <div id="mfd" class="f-done"><div class="ck">✅</div><h4>送信が完了しました</h4><p>ありがとうございます。<br>担当者より1営業日以内にご連絡いたします。</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ■ FOOTER -->
+<footer>
+  <div class="foot-in">
+    <div class="foot-logo">
+      <img src="./images/logo.png" alt="INSIGHT SALES" class="foot-logo-img">
+    </div>
+    <div class="foot-meta">
+      運営：<a href="https://jdnw.jp/" target="_blank" rel="noopener" style="color:rgba(255,255,255,.85);font-weight:700;text-decoration:underline">JDネット</a>　／　© AIインサイトセールス. All Rights Reserved.
+    </div>
+  </div>
+</footer>
+
+<script>
+// NAV scroll
+window.addEventListener('scroll', () => {
+  document.getElementById('mainNav').classList.toggle('s', scrollY > 60);
+});
+
+// Reveal
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('in'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+// Form submit（成功表示のみ・実際の送信処理は別フォームシステムで実装）
+function submitF(formId, doneId, source) {
+  document.getElementById(formId).style.display = 'none';
+  document.getElementById(doneId).style.display = 'block';
+}
+
+// Smooth scroll
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const t = document.querySelector(a.getAttribute('href'));
+    if(t) { e.preventDefault(); t.scrollIntoView({behavior:'smooth', block:'start'}); }
+  });
+});
+</script>
+</div><!-- /.is-lp -->
+</body>
+</html>
