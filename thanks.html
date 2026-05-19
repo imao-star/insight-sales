@@ -13,8 +13,26 @@
   gtag('js', new Date());
   gtag('config', 'G-3K8TSPFSP2');
 
-  // サンクスページ到達イベント（資料請求完了の最終確認に使える）
-  gtag('event', 'thanks_view', { 'page': 'thanks' });
+  // サンクスページ到達イベント(visitor_id・mail_patternも記録)
+  (function(){
+    var params = new URLSearchParams(window.location.search);
+    var visitorId = params.get('id') || 'none';
+    var pattern = params.get('p') || 'none';
+
+    // sessionStorageに保存(タブ切替などで使う)
+    if (visitorId !== 'none') {
+      try { sessionStorage.setItem('visitor_id', visitorId); } catch(e){}
+    }
+    if (pattern !== 'none') {
+      try { sessionStorage.setItem('mail_pattern', pattern); } catch(e){}
+    }
+
+    gtag('event', 'thanks_view', {
+      'page': 'thanks',
+      'visitor_id': visitorId,
+      'mail_pattern': pattern
+    });
+  })();
 </script>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -324,7 +342,13 @@ function switchTab(type) {
   TimerexCalendar();
 
   if (typeof gtag === 'function') {
-    gtag('event', 'booking_tab_click', { 'booking_type': type });
+    var vid = sessionStorage.getItem('visitor_id') || 'none';
+    var pat = sessionStorage.getItem('mail_pattern') || 'none';
+    gtag('event', 'booking_tab_click', {
+      'booking_type': type,
+      'visitor_id': vid,
+      'mail_pattern': pat
+    });
   }
 }
 </script>
