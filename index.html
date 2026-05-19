@@ -1,5 +1,10 @@
 <!DOCTYPE html>
 <html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AIインサイトセールス｜Webコンサル会社の新規商談を、仕組みで創る。</title>
+
 <!-- Microsoft Clarity -->
 <script type="text/javascript">
     (function(c,l,a,r,i,t,y){
@@ -8,10 +13,6 @@
         y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
     })(window, document, "clarity", "script", "wst9u2zzlp");
 </script>
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AIインサイトセールス｜Webコンサル会社の新規商談を、仕組みで創る。</title>
 
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-3K8TSPFSP2"></script>
@@ -22,11 +23,23 @@
   gtag('config', 'G-3K8TSPFSP2');
 
   // ── A/Bテスト用：URLの ?p= パラメータをGA4に記録 ──
+  // ── 個別識別子用：URLの ?id= パラメータをGA4に記録 ──
   (function(){
     var params = new URLSearchParams(window.location.search);
     var pattern = params.get('p') || 'none';
+    var visitorId = params.get('id') || 'none';
+
+    // セッション中、ページ間で識別子を維持(thanks.htmlへの遷移時にも引き継ぎ)
+    if (visitorId !== 'none') {
+      try { sessionStorage.setItem('visitor_id', visitorId); } catch(e){}
+    }
+    if (pattern !== 'none') {
+      try { sessionStorage.setItem('mail_pattern', pattern); } catch(e){}
+    }
+
     gtag('event', 'lp_view', {
       'mail_pattern': pattern,
+      'visitor_id': visitorId,
       'page': 'index'
     });
   })();
@@ -117,7 +130,7 @@ body{font-family:'Noto Sans JP',sans-serif;color:var(--text);background:var(--wh
 @keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
 
 .hero-h1{font-size:clamp(32px,4.2vw,58px);font-weight:900;color:#fff;line-height:1.25;letter-spacing:-.01em;margin-bottom:24px}
-.hero-h1 em{color:var(--sky);font-style:normal}
+.hero-h1 em{color:var(--sky);font-style:normal;font-size:1.25em;letter-spacing:-.02em}
 
 .hero-lead{font-size:16px;color:rgba(255,255,255,.75);line-height:1.9;max-width:540px;margin-bottom:36px;border-left:3px solid var(--sky);padding-left:18px}
 
@@ -515,14 +528,16 @@ footer{background:var(--navy);padding:48px 40px 32px}
     <div class="hero-left">
       <div class="hero-badge"><span></span>Webコンサル会社 特化サービス</div>
       <h1 class="hero-h1">
-        クライアントの集客は<br>
-        うまくいっているのに、<br>
-        なぜ自社の<em>新規商談</em>が<br>
-        増えないのか。
+        営業代行を雇う前に、<br>
+        取り逸している<em>数千万円</em>が<br>
+        あります。
       </h1>
       <p class="hero-lead">
-        その答えを<strong style="color:#fff">多くのWebコンサル会社</strong>が出しました。<br>
-        詳しくは、無料の資料で。
+        紹介と人脈に頼った1年で、あなたの会社が逃した売上は、<br>
+        <strong style="color:#fff">おそらく数千万円</strong>です。<br>
+        東証グロース上場のIT企業として、200社以上の支援実績の中から、<br>
+        住宅特化・宿泊特化など"業界特化型Web会社の事例"を<br>
+        1ページにまとめました。
       </p>
       <div class="hero-kpi">
         <div class="kpi-item"><span class="kpi-n">200<sub>社超</sub></span><div class="kpi-l">導入企業数</div></div>
@@ -1196,7 +1211,15 @@ function submitF(formId, doneId, source) {
     if (input.name) data[input.name] = input.value;
   });
 
-  // ── Formspree へ Ajax 送信 ──
+  // ── 個別識別子(visitor_id)とメールパターンを付与 ──
+  // URLパラメータ → sessionStorage → 'none' の順で取得
+  var urlParams = new URLSearchParams(window.location.search);
+  var visitorId = urlParams.get('id') || sessionStorage.getItem('visitor_id') || 'none';
+  var mailPattern = urlParams.get('p') || sessionStorage.getItem('mail_pattern') || 'none';
+  data['_visitor_id'] = visitorId;
+  data['_mail_pattern'] = mailPattern;
+
+  // Formspree へ Ajax 送信
   fetch(FORMSPREE_ENDPOINT, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
@@ -1206,14 +1229,21 @@ function submitF(formId, doneId, source) {
     if (res.ok) {
       // GA4：資料請求完了イベント
       if (typeof gtag === 'function') {
-        var params = new URLSearchParams(window.location.search);
         gtag('event', 'form_submit', {
-          'mail_pattern': params.get('p') || 'none',
+          'mail_pattern': mailPattern,
+          'visitor_id': visitorId,
           'form_source': source
         });
       }
-      // 成功 → サンクスページへ
-      window.location.href = 'thanks.html';
+      // 成功 → サンクスページへ(visitor_idを引き継ぎ)
+      var thanksUrl = 'thanks.html';
+      if (visitorId !== 'none' || mailPattern !== 'none') {
+        var qs = [];
+        if (visitorId !== 'none') qs.push('id=' + encodeURIComponent(visitorId));
+        if (mailPattern !== 'none') qs.push('p=' + encodeURIComponent(mailPattern));
+        thanksUrl += '?' + qs.join('&');
+      }
+      window.location.href = thanksUrl;
     } else {
       return res.json().then(err => { throw new Error(err.error || '送信に失敗しました'); });
     }
