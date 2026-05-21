@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>サービス資料｜インサイトセールス（株式会社ライトアップ提供）</title>
+
+<!-- GA4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3K8TSPFSP2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  // URLパラメータから「誰に送ったか」を取得
+  const params = new URLSearchParams(window.location.search);
+  const recipientCompany = params.get('c') || '(unknown)';
+  const senderInitial    = params.get('s') || '(unknown)';
+  const docKind          = 'webconsul';
+
+  gtag('config', 'G-3K8TSPFSP2', {
+    'custom_map': {
+      'dimension2': 'recipient_company',
+      'dimension3': 'sender_initial',
+      'dimension4': 'doc_kind'
+    }
+  });
+
+  gtag('event', 'doc_view', {
+    'recipient_company': recipientCompany,
+    'sender_initial': senderInitial,
+    'doc_kind': docKind
+  });
+</script>
+
+<!-- Microsoft Clarity -->
+<script type="text/javascript">
+  (function(c,l,a,r,i,t,y){
+    c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+    t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+    y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+  })(window, document, "clarity", "script", "wst9u2zzlp");
+</script>
+
+<style>
+  :root{
+    --ink:#0b1530;
+    --ink2:#1a2a52;
+    --paper:#ffffff;
+    --soft:#f5f7fb;
+    --line:#d8dee9;
+    --accent:#0a64d6;
+    --accent-dark:#084ca6;
+    --gold:#c9a45a;
+    --muted:#6b7588;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{
+    background:var(--paper);color:var(--ink);
+    font-family:"Hiragino Kaku Gothic ProN","Yu Gothic Medium","Meiryo",sans-serif;
+    line-height:1.75;-webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit}
+
+  /* ヘッダー */
+  header{
+    background:var(--ink);
+    color:var(--paper);
+    padding:14px 24px;
+    border-bottom:2px solid var(--gold);
+  }
+  .header-inner{
+    max-width:960px;margin:0 auto;
+    display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;
+  }
+  .brand{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+  .brand-mark{
+    font-family:"Hiragino Mincho ProN",serif;
+    font-size:1.0rem;letter-spacing:0.22em;font-weight:600;color:var(--gold);
+  }
+  .brand-co{font-size:0.7rem;letter-spacing:0.12em;color:#b8c4e0}
+  .listed{
+    font-size:0.62rem;letter-spacing:0.18em;color:var(--gold);
+    border:1px solid var(--gold);padding:3px 8px;border-radius:2px;white-space:nowrap;
+  }
+
+  /* 表紙 */
+  .cover{
+    max-width:960px;margin:0 auto;padding:48px 24px 32px;
+  }
+  .target-tag{
+    display:inline-block;font-size:0.7rem;letter-spacing:0.22em;color:var(--accent);
+    border:1px solid var(--accent);padding:5px 12px;border-radius:2px;margin-bottom:20px;
+    font-weight:600;
+  }
+  h1.title{
+    font-size:clamp(1.7rem,4.0vw,2.4rem);line-height:1.45;font-weight:700;
+    margin-bottom:20px;letter-spacing:0.02em;
+  }
+  h1.title em{font-style:normal;color:var(--accent)}
+  .lead{font-size:0.98rem;color:var(--muted);max-width:680px}
+
+  /* 数字バッジ */
+  .metrics{
+    max-width:960px;margin:0 auto;padding:0 24px 32px;
+    display:grid;grid-template-columns:repeat(4,1fr);gap:1px;
+    background:var(--line);border:1px solid var(--line);
+  }
+  @media(max-width:600px){.metrics{grid-template-columns:repeat(2,1fr)}}
+  .metric{background:var(--paper);padding:18px 14px;text-align:left}
+  .metric-label{font-size:0.65rem;letter-spacing:0.18em;color:var(--muted);margin-bottom:4px}
+  .metric-value{font-family:"Hiragino Mincho ProN",serif;font-size:1.7rem;font-weight:700;color:var(--ink);line-height:1.2}
+  .metric-value small{font-size:0.85rem;font-weight:500;color:var(--muted);margin-left:3px}
+
+  /* CTA */
+  .cta-row{
+    max-width:960px;margin:24px auto 0;padding:0 24px;
+    display:grid;grid-template-columns:2fr 1fr;gap:12px;
+  }
+  @media(max-width:600px){.cta-row{grid-template-columns:1fr}}
+  .cta{
+    display:flex;flex-direction:column;justify-content:center;
+    padding:18px 22px;text-decoration:none;transition:all .2s ease;
+    border:1px solid var(--line);background:#fff;
+  }
+  .cta:hover{transform:translateY(-1px);box-shadow:0 6px 20px rgba(11,15,20,0.08)}
+  .cta.primary{background:var(--accent);color:#fff;border-color:var(--accent)}
+  .cta.primary:hover{background:var(--accent-dark)}
+  .cta-label{font-size:0.68rem;letter-spacing:0.22em;opacity:0.75;margin-bottom:6px}
+  .cta-text{font-size:1rem;font-weight:700;letter-spacing:0.04em}
+  .cta-text::after{content:" →";opacity:0.7;margin-left:6px}
+  .cta-note{font-size:0.7rem;opacity:0.7;margin-top:4px}
+
+  /* PDFビューア */
+  .pdf-wrap{max-width:960px;margin:48px auto;padding:0 24px}
+  .pdf-label{
+    font-size:0.72rem;letter-spacing:0.25em;color:var(--muted);
+    margin-bottom:10px;padding-bottom:10px;border-bottom:1px solid var(--line);
+    display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;
+  }
+  .pdf-frame{
+    width:100%;height:80vh;min-height:520px;
+    border:1px solid var(--line);background:#fff;
+  }
+  .pdf-fallback{
+    padding:24px;text-align:center;font-size:0.9rem;color:var(--muted);
+    background:#fff;border:1px solid var(--line);
+  }
+  .pdf-fallback a{color:var(--accent);font-weight:600}
+
+  /* フッター */
+  footer{
+    background:var(--ink);color:var(--paper);
+    margin-top:48px;padding:32px 24px;
+  }
+  .footer-inner{
+    max-width:960px;margin:0 auto;
+    display:grid;grid-template-columns:1fr 1fr;gap:32px;
+    font-size:0.8rem;line-height:1.9;
+  }
+  @media(max-width:600px){.footer-inner{grid-template-columns:1fr}}
+  .footer-inner strong{display:block;color:var(--gold);font-size:0.7rem;letter-spacing:0.2em;margin-bottom:6px}
+  .footer-inner a{color:#b8c4e0;text-decoration:none}
+  .footer-inner a:hover{color:#fff}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="brand">
+      <span class="brand-mark">INSIGHT SALES</span>
+      <span class="brand-co">株式会社ライトアップ 提供</span>
+    </div>
+    <div class="listed">TSE GROWTH 上場</div>
+  </div>
+</header>
+
+<section class="cover">
+  <span class="target-tag">FOR WEB CONSULTING &amp; MARKETING COMPANIES</span>
+  <h1 class="title">
+    売れているWebコンサル会社は、<br>
+    営業を<em>「仕組み化」</em>している。
+  </h1>
+  <p class="lead">
+    クライアントの集客はできる。でも、自社の新規商談は増えない——。<br>
+    属人的な営業から抜け出す、AI×インサイトセールスのご案内です。
+  </p>
+</section>
+
+<div class="metrics">
+  <div class="metric">
+    <div class="metric-label">累計支援</div>
+    <div class="metric-value">200<small>社超</small></div>
+  </div>
+  <div class="metric">
+    <div class="metric-label">継続率</div>
+    <div class="metric-value">97<small>%</small></div>
+  </div>
+  <div class="metric">
+    <div class="metric-label">累計売上貢献</div>
+    <div class="metric-value">4<small>億円超</small></div>
+  </div>
+  <div class="metric">
+    <div class="metric-label">アポ率</div>
+    <div class="metric-value">3<small>% (最大)</small></div>
+  </div>
+</div>
+
+<div class="cta-row">
+  <a href="https://timerex.net/s/wu/4390e215" class="cta primary"
+     onclick="gtag('event','cta_book_meeting',{recipient_company:recipientCompany,sender_initial:senderInitial,doc_kind:docKind});">
+    <span class="cta-label">RECOMMENDED</span>
+    <span class="cta-text">オンライン商談を予約する</span>
+    <span class="cta-note">30分・無料／カレンダーから直接お選びいただけます</span>
+  </a>
+  <a href="./service-webconsul.pdf" download class="cta"
+     onclick="gtag('event','cta_pdf_download',{recipient_company:recipientCompany,sender_initial:senderInitial,doc_kind:docKind});">
+    <span class="cta-label">DOWNLOAD</span>
+    <span class="cta-text">PDFを保存</span>
+    <span class="cta-note">10ページ／読了目安 6分</span>
+  </a>
+</div>
+
+<div class="pdf-wrap">
+  <div class="pdf-label">
+    <span>SERVICE  DOCUMENT  —  FOR  WEB  CONSULTING  COMPANIES</span>
+    <span>※ブラウザ内で閲覧できます</span>
+  </div>
+  <object data="./service-webconsul.pdf#view=FitH&toolbar=1" type="application/pdf" class="pdf-frame">
+    <div class="pdf-fallback">
+      お使いのブラウザではPDFを直接表示できないようです。<br>
+      <a href="./service-webconsul.pdf">こちらからPDFをダウンロード</a>してご覧ください。
+    </div>
+  </object>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div>
+      <strong>SERVICE</strong>
+      インサイトセールス<br>
+      Webコンサル・Webマーケ会社専門の<br>
+      営業仕組み化インフラ
+    </div>
+    <div>
+      <strong>PROVIDED BY</strong>
+      株式会社ライトアップ<br>
+      Writeup Co., Ltd.／東証グロース市場 上場<br>
+      <a href="https://insight-sales.jp/">https://insight-sales.jp/</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // スクロール深度と滞在時間の計測
+  let fired50=false, fired90=false;
+  window.addEventListener('scroll', () => {
+    const d = (window.scrollY + window.innerHeight) / document.body.scrollHeight;
+    if(d>0.5 && !fired50){fired50=true;gtag('event','doc_scroll_50',{recipient_company:recipientCompany,sender_initial:senderInitial,doc_kind:docKind});}
+    if(d>0.9 && !fired90){fired90=true;gtag('event','doc_scroll_90',{recipient_company:recipientCompany,sender_initial:senderInitial,doc_kind:docKind});}
+  });
+  setTimeout(()=>gtag('event','doc_dwell_30s',{recipient_company:recipientCompany,sender_initial:senderInitial,doc_kind:docKind}),30000);
+  setTimeout(()=>gtag('event','doc_dwell_90s',{recipient_company:recipientCompany,sender_initial:senderInitial,doc_kind:docKind}),90000);
+</script>
+
+</body>
+</html>
